@@ -95,6 +95,7 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
   ): Promise<void> => {
     event.preventDefault();
     setErrorMessage('');
+
     const error: string | null = validateBooking({
       date,
       time,
@@ -107,23 +108,21 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
       return;
     }
 
-    const bookingReq = {
-      when: `${date}T${time}`,
-      lanes,
-      people,
-      shoes,
-    };
+    const bookingReq = { when: `${date}T${time}`, lanes, people, shoes };
+
     try {
       setIsLoading(true);
-      const response: FirstBookingRes = await createBooking(bookingReq);
+      const response = await createBooking(bookingReq);
       const bookingRes = response.bookingDetails;
 
-      navigate('/confirmation', {
-        state: { bookingRes, displayTime: date },
-      });
-      setErrorMessage('');
-    } catch (error) {
-      setErrorMessage('Booking failed. Please try again!');
+      navigate('/confirmation', { state: { bookingRes, displayTime: date } });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log('Error.message:', error.message);
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage('Booking failed. Please try again!');
+      }
     } finally {
       setIsLoading(false);
     }
