@@ -1,0 +1,11 @@
+.logo {
+  width: 76px;
+}
+
+.logo--bigger {
+  width: 136px;
+}
+
+.logo__img {
+  width: 100%;
+}

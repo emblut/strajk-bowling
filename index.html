@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STRAJK BOWLING</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+      body {
+        background-color: #fff4f1;
+      }
+
+      .loader {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff4f1;
+        min-height: 100vh;
+        position: relative;
+        z-index: 10000;
+      }
+
+      .loader__sub-heading {
+        font-family: 'Work Sans', sans-serif;
+        color: #441d81;
+        font-weight: 400;
+        letter-spacing: 5px;
+        font-size: 1.25rem;
+        text-align: center;
+      }
+
+      .page-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .page-header__heading {
+        color: #ec315a;
+        text-wrap: nowrap;
+        font-size: 3.75rem;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        letter-spacing: 3%;
+      }
+
+      .page-header__heading--bigger {
+        font-size: 5rem;
+      }
+
+      .logo {
+        width: 76px;
+      }
+
+      .logo--bigger {
+        width: 136px;
+      }
+
+      .logo__img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader page" id="initial-loader">
+      <div class="page-header">
+        <div class="logo logo--bigger">
+          <img src="/src/assets/logo.png" alt="Company logo" />
+        </div>
+        <img />
+        <h1 class="page-header__heading page-header__heading--bigger">
+          STRAJK
+        </h1>
+      </div>
+      <h2 class="loader__sub-heading">BOWLING</h2>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

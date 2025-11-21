@@ -1,0 +1,26 @@
+.confirmation-form .confirmation-total-label {
+  font-weight: 700;
+}
+
+.confirmation-form .confirmation-form__total {
+  margin-top: 3rem;
+}
+
+.confirmation-total {
+  text-align: end;
+}
+
+.confirmation-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.confirmation-empty__text {
+  color: blue;
+  text-align: center;
+  margin: 2rem 0;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.5rem;
+  color: var(--blue);
+}

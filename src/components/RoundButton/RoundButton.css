@@ -1,0 +1,33 @@
+.round-btn {
+  background-color: var(--red);
+  border: none;
+  color: var(--white);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin: 0 2rem;
+}
+
+.round-btn__img-wrapper {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.round-btn__img {
+  width: 50%;
+  height: 50%;
+}
+
+.round-btn--bigger {
+  height: 50px;
+  width: 50px;
+}
+
+.round-btn__img-wrapper--bigger {
+  width: 50px;
+  height: 50px;
+}

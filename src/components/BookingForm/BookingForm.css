@@ -1,0 +1,33 @@
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.booking-form__top-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.booking-form__lane-field {
+  background-color: red;
+}
+
+.booking-form__shoe-container {
+  display: flex;
+}
+
+.booking-form__add-btn {
+  align-self: center;
+  margin: 1rem 0;
+}
+
+.booking-form__error {
+  text-align: center;
+  margin: 2rem 0;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.5rem;
+  color: var(--red);
+}

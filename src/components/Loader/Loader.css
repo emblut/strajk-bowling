@@ -1,0 +1,17 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  position: relative;
+}
+
+.loader__sub-heading {
+  font-family: 'Work Sans', sans-serif;
+  color: var(--blue);
+  font-weight: 400;
+  letter-spacing: 5px;
+  font-size: 1.25rem;
+  text-align: center;
+}
