@@ -15,6 +15,7 @@ export interface SubHeadingProps {
 
 export interface ButtonProps {
   text: string;
+  IsLoading: boolean;
 }
 
 export interface MenuButtonProps {
@@ -53,6 +54,7 @@ export interface BookingInput {
 
 export interface BookingFormProps {
   setIsLoading: Dispatch<SetStateAction<boolean>>;
+  IsLoading: boolean;
 }
 
 export interface ConfirmationFormProps {

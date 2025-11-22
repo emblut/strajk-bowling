@@ -26,7 +26,7 @@ import removeIcon from '../../assets/remove.png';
 
 import './BookingForm.css';
 
-function BookingForm({ setIsLoading }: BookingFormProps) {
+function BookingForm({ setIsLoading, IsLoading }: BookingFormProps) {
   const [date, setDate] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<boolean>(false);
 
@@ -51,6 +51,10 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
     setDates(generateTwoMonthsDates());
     setTimes(generateTimes(OPENING_HOUR, CLOSING_HOUR, INTERVAL_MINUTES));
   }, []);
+
+  useEffect(() => {
+    console.log('Error message updated:', errorMessage);
+  }, [errorMessage]);
 
   const handleRemoveShoe = (index: number): void => {
     setShoes(shoes.filter((_, i) => i !== index));
@@ -84,17 +88,10 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
     }
   }, [lanes]);
 
-  useEffect((): void => {
-    if (errorMessage) {
-      setErrorMessage('');
-    }
-  }, [people, lanes, shoes, date, time]);
-
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
-    setErrorMessage('');
 
     const error: string | null = validateBooking({
       date,
@@ -104,6 +101,7 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
       shoes,
     });
     if (error) {
+      console.log(error);
       setErrorMessage(error);
       return;
     }
@@ -113,15 +111,16 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
     try {
       setIsLoading(true);
       const response = await createBooking(bookingReq);
+      setErrorMessage('');
       const bookingRes = response.bookingDetails;
-
       navigate('/confirmation', { state: { bookingRes, displayTime: date } });
-    } catch (error: unknown) {
+    } catch (error) {
       if (error instanceof Error) {
-        console.log('Error.message:', error.message);
+        console.log(error.message);
         setErrorMessage(error.message);
       } else {
         setErrorMessage('Booking failed. Please try again!');
+        console.log(errorMessage);
       }
     } finally {
       setIsLoading(false);
@@ -147,6 +146,7 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
                 setDate(event.target.value);
               }}
               required
+              disabled={IsLoading}
             >
               <option disabled hidden value=''>
                 Choose a date
@@ -275,7 +275,7 @@ function BookingForm({ setIsLoading }: BookingFormProps) {
             )}
           </>
         )}
-        <Button text={'STRIIIIIIKE!'} />
+        <Button text={'STRIIIIIIKE!'} IsLoading={IsLoading} />
       </form>
     </>
   );

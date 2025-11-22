@@ -8,17 +8,13 @@ function BookingPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className='page'>
-          <PageHeader heading='BOOKING' />
-          <BookingForm setIsLoading={setIsLoading} />
-        </div>
-      )}
-    </>
-  );
+  <div className='page'>
+    <PageHeader heading='BOOKING' />
+    <BookingForm setIsLoading={setIsLoading} isLoading={isLoading} />
+    {isLoading && <Loader />} {/* overlay loader */}
+  </div>
+);
+
 }
 
 export default BookingPage;
